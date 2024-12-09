@@ -36,3 +36,14 @@ CREATE TABLE review (
     ReviewDate DATE NOT NULL
 );
 
+--CREATE TABLE movie
+
+CREATE TABLE movie (
+    MovieID INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    Genre VARCHAR(100) NOT NULL,
+    ReleaseYear INT NOT NULL,
+    Duration INT,
+    rating VARCHAR(10)
+);
+
