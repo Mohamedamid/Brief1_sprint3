@@ -24,3 +24,15 @@ CREATE TABLE users (
     FOREIGN KEY (SubscriptionID) REFERENCES subscription(SubscriptionID)
 );
 
+--CREATE TABLE review
+
+CREATE TABLE review (
+    reviewID INT PRIMARY KEY AUTO_INCREMENT,
+    UserID INT,
+    FOREIGN KEY (UserID) REFERENCES users(UserID),
+    MovieID INT,
+    Rating INT NOT NULL,
+    ReviewText TEXT,
+    ReviewDate DATE NOT NULL
+);
+
