@@ -1,0 +1,6 @@
+-- CREATE DATABASE
+
+CREATE DATABASE stream;
+
+USE stream;
+
