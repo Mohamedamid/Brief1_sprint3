@@ -47,3 +47,15 @@ CREATE TABLE movie (
     rating VARCHAR(10)
 );
 
+--CREATE TABLE watchhistory
+
+CREATE TABLE watchhistory (
+    WatchHistoryID INT PRIMARY KEY AUTO_INCREMENT,
+    UserID INT,
+    FOREIGN KEY (UserID) REFERENCES users(UserID),
+    MovieID INT,
+    FOREIGN KEY (MovieID) REFERENCES movie(MovieID),
+    watchDate DATE NOT NULL,
+    CompletionPercentage INT NOT NULL
+);
+
