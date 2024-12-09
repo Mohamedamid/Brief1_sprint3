@@ -58,9 +58,3 @@ CREATE TABLE watchhistory (
     watchDate DATE NOT NULL,
     CompletionPercentage INT NOT NULL
 );
-
---ALTER TABLE review
-
-ALTER TABLE review
-ADD CONSTRAINT fk_movieID
-FOREIGN KEY (MovieID) REFERENCES movie(MovieID);
