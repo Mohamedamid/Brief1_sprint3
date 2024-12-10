@@ -75,5 +75,10 @@ SELECT * FROM movie WHERE genre = 'Comedy' and ReleaseYear > 2020 ;
 
 -- Mise à jour des abonnements : Passer tous les utilisateurs de "Basic" à "Premium"..
 
-UPDATE subscription SET SubscriptionType = 'Premium' WHERE SubscriptionType = 'Basic'
+UPDATE users INNER JOIN subscription on users.SubscriptionID = subscription.SubscriptionID 
+SET subscription.SubscriptionType = 'Premium' WHERE subscription.SubscriptionType = 'Basic'
 
+-- Afficher les abonnements : Joindre les utilisateurs à leurs types d'abonnements.
+
+SELECT u.firstName ,u.lastName ,u.email ,u.RegistrationDate ,s.SubscriptionType 
+FROM users u INNER JOIN subscription s on u.SubscriptionID = s.SubscriptionID;
