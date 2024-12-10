@@ -69,3 +69,6 @@ FOREIGN KEY (MovieID) REFERENCES movie(MovieID);
 
 INSERT INTO movie (title ,Genre ,ReleaseYear ,Duration , rating) VALUES ('Data Science Adventures', 'Documentary', 2024, 90, 8.5);
 
+-- Rechercher des films : Lister tous les films du genre "Comedy" sortis après 2020
+
+SELECT * FROM movie WHERE genre = 'Comedy' and ReleaseYear > 2020 ;
