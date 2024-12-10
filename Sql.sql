@@ -72,3 +72,8 @@ INSERT INTO movie (title ,Genre ,ReleaseYear ,Duration , rating) VALUES ('Data S
 -- Rechercher des films : Lister tous les films du genre "Comedy" sortis après 2020
 
 SELECT * FROM movie WHERE genre = 'Comedy' and ReleaseYear > 2020 ;
+
+-- Mise à jour des abonnements : Passer tous les utilisateurs de "Basic" à "Premium"..
+
+UPDATE subscription SET SubscriptionType = 'Premium' WHERE SubscriptionType = 'Basic'
+
