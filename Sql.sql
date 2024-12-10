@@ -116,3 +116,14 @@ duration
 FROM movie
 ORDER BY duration DESC
 LIMIT 5;
+
+-- Agrégation : Calculer le pourcentage moyen de complétion pour chaque film.
+
+SELECT m.MovieID ,
+m.title ,
+AVG(w.CompletionPercentage) 
+as avg_completion_percentage 
+FROM movie m 
+INNER JOIN watchhistory w ON
+m.MovieID = w.MovieID 
+GROUP BY m.MovieID ,m.title;
