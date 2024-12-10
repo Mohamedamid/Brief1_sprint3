@@ -107,3 +107,12 @@ on u.userId = w.UserID
 INNER JOIN movie m 
 on w.MovieID = m.MovieID 
 WHERE w.CompletionPercentage = 100;
+
+-- Trier et limiter : Afficher les 5 films les plus longs, triés par durée.
+
+SELECT MovieID, 
+title, 
+duration
+FROM movie
+ORDER BY duration DESC
+LIMIT 5;
