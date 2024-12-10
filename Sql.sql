@@ -1,8 +1,8 @@
 -- CREATE DATABASE
 
-CREATE DATABASE stream;
+CREATE DATABASE streaming_service;
 
-USE stream;
+USE streaming_service;
 
 --CREATE TABLE subscription
 
@@ -59,8 +59,13 @@ CREATE TABLE watchhistory (
     CompletionPercentage INT NOT NULL
 );
 
---ALTER TABLE review
+--ajouter la constraint MovieID de la table review 
 
 ALTER TABLE review
 ADD CONSTRAINT fk_movieID
 FOREIGN KEY (MovieID) REFERENCES movie(MovieID);
+
+-- Insérer un film : Ajouter un nouveau film intitulé Data Science Adventures dans le genre "Documentary"
+
+INSERT INTO movie (title ,Genre ,ReleaseYear ,Duration , rating) VALUES ('Data Science Adventures', 'Documentary', 2024, 90, 8.5);
+
