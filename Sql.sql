@@ -67,18 +67,43 @@ FOREIGN KEY (MovieID) REFERENCES movie(MovieID);
 
 -- Insérer un film : Ajouter un nouveau film intitulé Data Science Adventures dans le genre "Documentary"
 
-INSERT INTO movie (title ,Genre ,ReleaseYear ,Duration , rating) VALUES ('Data Science Adventures', 'Documentary', 2024, 90, 8.5);
+INSERT INTO movie (title ,Genre ,ReleaseYear ,Duration , rating) 
+VALUES ('Data Science Adventures', 'Documentary', 2024, 90, 8.5);
 
 -- Rechercher des films : Lister tous les films du genre "Comedy" sortis après 2020
 
-SELECT * FROM movie WHERE genre = 'Comedy' and ReleaseYear > 2020 ;
+SELECT * FROM movie 
+WHERE genre = 'Comedy' 
+and ReleaseYear > 2020 ;
 
 -- Mise à jour des abonnements : Passer tous les utilisateurs de "Basic" à "Premium"..
 
-UPDATE users INNER JOIN subscription on users.SubscriptionID = subscription.SubscriptionID 
-SET subscription.SubscriptionType = 'Premium' WHERE subscription.SubscriptionType = 'Basic'
+UPDATE users 
+INNER JOIN subscription 
+on users.SubscriptionID = subscription.SubscriptionID 
+SET subscription.SubscriptionType = 'Premium' 
+WHERE subscription.SubscriptionType = 'Basic';
 
 -- Afficher les abonnements : Joindre les utilisateurs à leurs types d'abonnements.
 
-SELECT u.firstName ,u.lastName ,u.email ,u.RegistrationDate ,s.SubscriptionType 
-FROM users u INNER JOIN subscription s on u.SubscriptionID = s.SubscriptionID;
+SELECT u.firstName ,
+u.lastName ,
+u.email ,
+u.RegistrationDate ,
+s.SubscriptionType 
+FROM users u 
+INNER JOIN subscription s 
+on u.SubscriptionID = s.SubscriptionID;
+
+-- Filtrer les visionnages : Trouver tous les utilisateurs ayant terminé de regarder un film.
+
+SELECT u.userId ,
+u.firstName ,
+u.lastName ,
+m.title 
+FROM users u 
+INNER JOIN watchhistory w 
+on u.userId = w.UserID 
+INNER JOIN movie m 
+on w.MovieID = m.MovieID 
+WHERE w.CompletionPercentage = 100;
