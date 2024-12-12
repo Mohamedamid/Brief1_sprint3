@@ -127,3 +127,31 @@ FROM movie m
 INNER JOIN watchhistory w ON
 m.MovieID = w.MovieID 
 GROUP BY m.MovieID ,m.title;
+
+-- Group By : Grouper les utilisateurs par type d’abonnement et compter le nombre total d’utilisateurs par groupe.
+
+SELECT s.SubscriptionType, COUNT(u.userId) AS user_count
+FROM users u
+INNER JOIN subscription s ON u.SubscriptionID = s.SubscriptionID
+GROUP BY s.SubscriptionType;
+
+-- Sous-requête (Bonus): Trouver les films ayant une note moyenne supérieure à 4.
+
+SELECT movie.title
+FROM movie
+WHERE movie.MovieID IN (
+    SELECT movie.MovieID
+    FROM review
+    GROUP BY movie.MovieID
+    HAVING AVG(review.Rating) > 4
+);
+
+
+-- Self-Join (Bonus): Trouver des paires de films du même genre sortis la même année.
+
+SELECT m1.title AS Movie1, m2.title AS Movie2, m1.Genre, m1.ReleaseYear
+FROM movie m1
+JOIN movie m2 ON m1.Genre = m2.Genre AND m1.ReleaseYear = m2.ReleaseYear
+WHERE m1.MovieID < m2.MovieID;
+
+
